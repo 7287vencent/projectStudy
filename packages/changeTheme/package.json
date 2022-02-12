@@ -7,10 +7,72 @@
   "homepage": "",
   "license": "ISC",
   "main": "main.js",
+  "publishConfig": {
+    "registry": "https://registry.npm.taobao.org"
+  },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "dev": "webpack serve --config ./webpack.dev.js",
+    "build:dll": "webpack --config ./webpack.dll.js",
+    "dev:pro": "webpack serve --config ./webpack.prodll.js",
+    "test": "prettier --write src/**/*.{js,vue} --ignore-unknown",
+    "ls-lint": "ls-lint",
+    "lint:script": "eslint src/**/*.{js,vue} ",
+    "lint:style": "stylelint --custom-syntax postcss-scss src/**/*.{scss,sass}",
+    "lint:style-fix": "stylelint --fix --custom-syntax postcss-scss src/**/*.{scss,sass}"
   },
   "devDependencies": {
-    
+    "@babel/core": "^7.16.0",
+    "@babel/eslint-parser": "^7.16.3",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.16.0",
+    "add-asset-html-webpack-plugin": "^3.2.0",
+    "autoprefixer": "^10.4.0",
+    "babel-loader": "^8.2.3",
+    "cache-loader": "^4.1.0",
+    "css-loader": "^6.5.1",
+    "dart-sass": "^1.25.0",
+    "esbuild-loader": "^2.16.0",
+    "eslint": "^8.3.0",
+    "eslint-plugin-vue": "^8.1.1",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.5.0",
+    "lint-staged": "^11.2.6",
+    "postcss": "^8.4.4",
+    "postcss-loader": "^6.2.0",
+    "postcss-scss": "^4.0.2",
+    "prettier": "^2.5.0",
+    "sass-loader": "^12.3.0",
+    "style-loader": "^3.3.1",
+    "stylelint": "^14.1.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-standard": "^24.0.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-scss": "^4.0.0",
+    "thread-loader": "^3.0.4",
+    "url-loader": "^4.1.1",
+    "vue-loader": "^15.9.8",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^5.63.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.4.0",
+    "yorkie": "^2.0.0"
+  },
+  "dependencies": {
+    "@ls-lint/ls-lint": "^1.10.0",
+    "element-ui": "2.15.6",
+    "js-export-excel": "^1.1.4",
+    "vue": "2.6.14",
+    "vue-router": "^3.5.3",
+    "vuex": "^3.6.2"
+  },
+  "gitHooks": {
+    "commit-msg": "node scripts/verifyCommit.js",
+    "pre-commit": "ls-lint && lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.{js,vue}": [
+      "eslint --fix",
+      "prettier --write --ignore-unknown"
+    ]
   }
 }

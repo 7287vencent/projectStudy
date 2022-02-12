@@ -1,0 +1,18 @@
+ls:
+  src/*:
+    .dir: kebab-case # 设置目录
+    .js: kebab-case
+    .vue: camelCase | PascalCase
+    # .ts: camelCase | PascalCase
+    # .d.ts: camelCase
+    # .spec.ts: camelCase | PascalCase
+    # .mock.ts: camelCase
+    # packages/*/src: # matches any sequence of non-path-separators
+    #     .js: kebab-case
+
+    # packages/**/templates: # matches any sequence of characters, including path separators
+    #     .html: kebab-case
+
+ignore: 
+    - .git 
+    - node_modules
