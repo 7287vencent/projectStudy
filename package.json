@@ -1,0 +1,12 @@
+{
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^4.0.0",
+    "lerna-update-wizard": "^1.1.1",
+    "lodash": "^4.17.21"
+  },
+  "scripts": {
+    "update": "lernaupdate"
+  }
+}
