@@ -1,11 +1,1 @@
-# `changeTheme`
-
-> TODO: description
-
-## Usage
-
-```
-const changetheme = require('changeTheme');
-
-// TODO: DEMONSTRATE API
-```
+#### 项目的模版

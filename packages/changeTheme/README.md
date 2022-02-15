@@ -1,11 +1,1 @@
-# `changeTheme`
-
-> TODO: description
-
-## Usage
-
-```
-const changetheme = require('changeTheme');
-
-// TODO: DEMONSTRATE API
-```
+### 使用scss实现换肤
