@@ -1,0 +1,89 @@
+/* 面包屑导航 */
+.el-breadcrumb__inner a:hover,
+.el-breadcrumb__inner.is-link:hover {
+  color: $main-color;
+}
+
+/* 下拉菜单 */
+.el-dropdown-menu__item:focus,
+.el-dropdown-menu__item:not(.is-disabled):hover,
+.el-select-dropdown .el-select-dropdown__item.selected {
+  color: $main-color;
+}
+.selectType .el-select .el-input__inner,
+.el-select .el-input.is-focus .el-input__inner {
+  border-color: $main-color;
+}
+
+/* 输入框 */
+.search-wrapper .input-with-select .el-input-group__prepend,
+.search-wrapper .el-input .el-input__inner,
+.el-select .el-input__inner:focus,
+.el-input.is-active .el-input__inner,
+.el-input__inner:focus,
+.el-textarea__inner:focus {
+  border: 1px solid $main-color;
+}
+
+/* 输入框后置内容 */
+.el-input-group__append {
+  background-color: $main-color;
+  border: 1px solid $main-color;
+  color: #fff;
+}
+
+/* 分页 */
+.el-pagination.is-background .el-pager li:not(.disabled):hover {
+  color: $main-color;
+}
+
+.el-pagination.is-background .el-pager li:not(.disabled).active {
+  background-color: $main-color;
+  color: #fff;
+}
+
+/* 多选框 */
+.el-checkbox__inner:hover,
+.el-checkbox__inner:focus,
+.el-checkbox__input.is-focus .el-checkbox__inner {
+  border-color: $main-color;
+  outline-color: $main-color;
+}
+
+.el-checkbox__input.is-checked .el-checkbox__inner,
+.el-checkbox__input.is-indeterminate .el-checkbox__inner {
+  background-color: $main-color;
+  border-color: $main-color;
+}
+
+/* 按钮 */
+.el-button--primary,
+.el-button--primary:focus,
+.el-button--primary:hover {
+  background-color: $main-color;
+  border-color: $main-color;
+}
+.el-button--default:focus,
+.el-button--default:hover {
+  background: none;
+  border-color: $main-color;
+  color: $main-color;
+}
+
+/* 文字按钮 */
+.el-button--text,
+.el-button--text:focus,
+.el-button--text:hover {
+  color: $main-color;
+}
+
+/* 空心按钮 */
+.el-button.is-plain:focus,
+.el-button.is-plain:hover {
+  border-color: $main-color;
+  color: $main-color;
+}
+
+.el-card {
+  border: 1px solid $card-border-color;
+}

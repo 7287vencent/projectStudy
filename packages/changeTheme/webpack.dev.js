@@ -103,7 +103,8 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              implementation: require('dart-sass')
+              implementation: require('dart-sass'),
+              additionalData: `@import "@/assets/css/themeVar.scss";`,
             }
           }
         ]
@@ -174,7 +175,8 @@ module.exports = {
   devtool: 'inline-source-map',
   resolve: {
     alias: {
-      vue$: 'vue/dist/vue.runtime.esm.js'
+      vue$: 'vue/dist/vue.runtime.esm.js',
+      '@': path.resolve('src')
     },
     extensions: [
       '.js',

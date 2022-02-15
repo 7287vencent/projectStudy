@@ -1,0 +1,30 @@
+$main-color: var(--main-color);
+$table-bottom-color: var(--table-bottom-color);
+$calendar-alpha-color: var(--calendar-alpha-color);
+$card-border-color: var(--card-border-color);
+.App.theme- {
+  --main-color: #05cdff;
+  --table-bottom-color: #86bfa1;
+  --calendar-alpha-color: #86bfa1;
+  --card-border-color: #eff5f2;
+}
+.App.theme-green {
+  --main-color: #0c7f42;
+  --table-bottom-color: #86bfa1;
+  --calendar-alpha-color: #86bfa1;
+  --card-border-color: #eff5f2;
+}
+
+.App.theme-blue {
+  --main-color: #2c83db;
+  --table-bottom-color: #95c1ed;
+  --calendar-alpha-color: #95c1ed;
+  --card-border-color: #eceef5;
+}
+
+.App.theme-red {
+  --main-color: #ef4944;
+  --table-bottom-color: #f9b6b4;
+  --calendar-alpha-color: #f9b6b4;
+  --card-border-color: #eeeeee;
+}

@@ -1,50 +1,59 @@
 <template>
-  <div class="App">
-    <h2>hello world</h2>
+  <div class="App" :class="[`theme-${theme}`]">
     <div>
-      <router-link to="/Home">Home</router-link>
-      <router-link to="/List">List</router-link>
-    </div>
-    <div>
-      <router-view></router-view>
-    </div>
-    <div>
-      <p>{{ getCount }}</p>
-      <button @click="mutationAdd(1)">同步+1</button>
-      <button @click="actionAdd(2)">异步两秒+2</button>
-
       <el-row>
-        <el-button>默认按钮</el-button>
         <el-button type="primary">主要按钮</el-button>
-        <el-button type="success">成功按钮</el-button>
-        <el-button type="info">信息按钮</el-button>
-        <el-button type="warning">警告按钮</el-button>
-        <el-button type="danger">危险按钮</el-button>
       </el-row>
     </div>
+    <el-dropdown class="username" trigger="click">
+      <span class="el-dropdown-link" style="min-width: 30px"
+        >修改主题颜色
+      </span>
+      <el-dropdown-menu slot="dropdown">
+        <el-dropdown-item @click.native="gotoHome">首页</el-dropdown-item>
+        <el-dropdown-item @click.native="changeTheme('red')"
+          >红色</el-dropdown-item
+        >
+        <el-dropdown-item @click.native="changeTheme('green')"
+          >绿色</el-dropdown-item
+        >
+        <el-dropdown-item @click.native="changeTheme('blue')"
+          >蓝色</el-dropdown-item
+        >
+      </el-dropdown-menu>
+    </el-dropdown>
+    <el-button @click="changeTheme('red')">红色</el-button>
+    <el-button @click="changeTheme('green')">绿色</el-button>
+    <el-button @click="changeTheme('blue')">蓝色</el-button>
+
+    <div class="box"></div>
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters, mapMutations } from 'vuex';
 export default {
-  name: 'App',
+  name: "App",
   data() {
-    return {};
-  },
-  computed: {
-    ...mapGetters(['getCount']),
+    return {
+      theme: "",
+    };
   },
   methods: {
-    ...mapActions(
-      // ['add'] // ? 将 `this.add()` 映射为 `this.$store.dispatch('add')`
-      {
-        actionAdd: 'add', // ? 将 `this.actionAdd()` 映射为 `this.$store.dispatch('add')`
-      }
-    ),
-    ...mapMutations({
-      mutationAdd: 'add', // ? 将 `this.mutationAdd()` 映射为 `this.$store.commit('add')`
-    }),
+    changeTheme(theme) {
+      this.theme = theme;
+      this.changeColor();
+    },
+    changeColor: function () {
+      let color = {
+        green: "#0c7f42",
+        blue: "#2C83DB",
+        red: "#EF4944",
+      };
+      document.documentElement.style.setProperty(
+        "--main-color",
+        color[this.theme]
+      );
+    },
   },
 };
 </script>
@@ -52,5 +61,16 @@ export default {
 <style lang="scss">
 .App {
   color: red;
+  .box {
+    width: 300px;
+    height: 300px;
+    background: $main-color;
+  }
+}
+
+.el-dropdown-menu__item:focus,
+.el-dropdown-menu__item:not(.is-disabled):hover,
+.el-select-dropdown .el-select-dropdown__item.selected {
+  color: $main-color;
 }
 </style>
