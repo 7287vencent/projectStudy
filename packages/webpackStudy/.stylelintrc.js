@@ -1,0 +1,47 @@
+module.exports = {
+    root: true,
+    rules: {
+      "indentation": [2, { severity: 'warning' }],
+      'block-opening-brace-space-before': ['always', { severity: 'warning' }],
+      'declaration-colon-space-after': ['always', { severity: 'warning' }],
+      'max-line-length': [120, { severity: 'warning' }],
+      'selector-list-comma-newline-after': ['always', { severity: 'warning' }],
+      'selector-combinator-space-before': ['always', { severity: 'warning' }],
+      'selector-combinator-space-after': ['always', { severity: 'warning' }],
+      'selector-attribute-quotes': ['always', { severity: 'warning' }],
+      'block-opening-brace-newline-after': ['always', { severity: 'warning' }],
+      'shorthand-property-no-redundant-values': [true, { severity: 'warning' }],
+      'string-quotes': ['double', { severity: 'warning' }],
+      'number-leading-zero': ['never', { severity: 'warning' }],
+      'length-zero-no-unit': [true, { severity: 'warning' }],
+      'color-hex-length': ['short', { severity: 'warning' }],
+      'color-hex-case': ['lower', { severity: 'warning' }],
+      'media-feature-range-operator-space-before': ['always', { severity: 'warning' }],
+      'media-feature-range-operator-space-after': ['always', { severity: 'warning' }],
+      'media-feature-colon-space-before': ['never', { severity: 'warning' }],
+      'media-feature-colon-space-after': ['always', { severity: 'warning' }],
+      'rule-empty-line-before': ['always', { severity: 'warning' }],
+      'selector-attribute-operator-space-before': ['never', { severity: 'warning' }],
+      'selector-attribute-operator-space-after': ['never', { severity: 'warning' }],
+      'declaration-block-trailing-semicolon': ['always', { severity: 'warning' }],
+      'selector-attribute-brackets-space-inside': ['never', { severity: 'warning' }],
+      'comment-whitespace-inside': ['always', { severity: 'warning' }],
+      'comment-empty-line-before': ['always', { severity: 'warning' }],
+      'selector-pseudo-class-parentheses-space-inside': ['never', { severity: 'warning' }],
+      'media-feature-parentheses-space-inside': ['never', { severity: 'warning' }],
+      // ! 不可修复
+      "unit-no-unknown": [true, { severity: 'warning' }], // ? 禁止无效的单位
+      "property-no-unknown": [true, { severity: 'warning' }], // ? 禁止未知的单位
+      // 'selector-no-qualifying-type': [true, { severity: 'warning' }],
+      // 'declaration-no-important': [true, { severity: 'warning' }],
+      'function-url-quotes': ['never', { severity: 'warning' }],
+      // 'color-named': ['never', { severity: 'warning' }],
+      'font-weight-notation': ['named-where-possible', { severity: 'warning', ignore: ["relative"]}],
+      'font-family-name-quotes': ['always-unless-keyword', { severity: 'warning' }],
+      'no-duplicate-selectors': [true, { severity: 'warning' }],
+      'function-calc-no-unspaced-operator': [true, { severity: 'warning' }],
+    },
+    ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts'],
+  }
+  
+  

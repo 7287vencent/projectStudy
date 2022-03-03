@@ -1,0 +1,30 @@
+ls:
+  src/*:
+    .dir: kebab-case # 设置目录
+    .js: kebab-case
+    .vue: camelCase | PascalCase
+    # .ts: camelCase | PascalCase
+    # .d.ts: camelCase
+    # .spec.ts: camelCase | PascalCase
+    # .mock.ts: camelCase
+    # packages/*/src: # matches any sequence of non-path-separators
+    #     .js: kebab-case
+
+    # packages/**/templates: # matches any sequence of characters, including path separators
+    #     .html: kebab-case
+
+ignore: 
+    - .git 
+    - node_modules
+
+
+
+# lowercase 单词必须小写
+# camelcase 驼峰式写法 lastName
+# pascalcase 大驼峰式命名法 FirstName
+# snakecase 蛇式命名 user_name
+# kebabcase 羊肉串 kk-bb-kk
+# pointcase 未知 kk.bb.kk
+# 按敲键盘的效率来看，lowercase > camelCase > PascalCase > kebab-case > snake_case
+# 但是按照可读性来看，snake_case > kebab-case > camelCase = PascalCase > lowercase
+
