@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .wrapper {
+        padding: 100px;
+        border: solid 1px #000;
+    }
+
+    #normal {
+        position: relative;
+        width: 300px;
+        height: 200px;
+        border: 1px solid #000;
+    }
+
+    #normal img {
+        width: 100%;
+        height: 100%;
+    }
+
+    #show {
+        width: 50px;
+        height: 50px;
+        background: #FF0;
+        opacity: 0.3;
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: move;
+        display: none;
+    }
+
+    #big {
+        width: 300px;
+        height: 200px;
+        overflow: hidden;
+        position: relative;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    #big>img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1920px;
+        height: 1080px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        
+    <div id="normal">
+        <img src="./img/01.jpeg" />
+        <div id="show"></div>
+    </div>
+    <div id="big"><img src="./img/01.jpeg" /></div>
+    </div>
+
+    <script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+    $(function() {
+
+        $('#normal').mouseover(function() {
+
+            //鼠标移入"显示"方块
+            $('#show').show();
+            $(this).mousemove(function(ev) {
+                // console.log("offsetXY",ev.offsetX, ev.offsetY)
+
+                // //鼠标移动方块随着移动
+                $('#show').css({
+
+                    'left': ev.pageX - $('#show').width() / 2 - 100,
+                    'top': ev.pageY - $('#show').height() / 2 - 100
+
+                })
+
+                //防止方块移出图片内容    
+                if ($('#show').offset().top <= 100) {
+
+                    $('#show').css('top', 0);
+
+                }
+                if ($('#show').offset().top >= 250) {
+
+                    $('#show').css('top', 150);
+
+                }
+                if ($('#show').offset().left <= 100) {
+
+                    $('#show').css('left', 0);
+
+                }
+                if ($('#show').offset().left >= 350) {
+
+                    $('#show').css('left', 250);
+
+                }
+                //在大容器显示放大图片
+                $('#big').find('img').css({
+
+                    'left': -1920 * ($('#show').offset().left - 100) / 300,
+                    'top': -1080 * ($('#show').offset().top - 100) / 200
+
+                });
+
+            });
+
+
+        });
+
+        //鼠标移出图片让方块"消失"
+        $('#normal').mouseout(function() {
+
+            $('#show').hide();
+
+        });
+
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>图片放大镜</title>
+<style type="text/css">
+body{ padding: 0;margin: 0;width: 100%;height:100%;overflow: hidden; }
+.wrap{ text-align: center; }
+.wrap img{ width: 60%;cursor: crosshair; }
+.loupe{ 
+  position:absolute; 
+  pointer-events:none;
+  visibility:hidden;
+  z-index:999;
+  width: 200px;
+  height: 200px;
+  border:3px solid #636363;
+  border-radius:50%;
+}
+</style>
+</head>
+<body>
+  <div class="loupe"></div>
+  <div class="wrap">
+    <img src="http://wx.karlew.com/loupe/img/pic.jpg">
+  </div>
+</body>
+</html>
+<script type="text/javascript" src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  var vh=$(window).height()
+  var vw=$(window).width()
+  var imgh=$(".wrap img").height()
+  var imgw=$(".wrap img").width()
+  var beginX=vw*2/10
+  var endX=beginX+imgw
+  var beginY=(vh-imgh)/2
+  var endY=beginY+imgh
+  $(".wrap").css("margin-top",beginY+"px")
+  //鼠标经过
+  document.addEventListener("mousemove", loupe , false);
+  //触屏模式触发
+  document.addEventListener("touchmove", loupe , false);
+  document.addEventListener("touchstart", loupe , false);
+  document.addEventListener("touchend", function(e) {
+    $(".loupe").css("visibility","hidden")
+  }, false);
+  function loupe(e){
+    var x,y
+    if(e.type!="mousemove"){
+      x=e.touches[0].pageX
+      y=e.touches[0].pageY
+    }
+    //如果支持触摸事件，则屏蔽鼠标经过事件，避免影响touchstart的效果
+    else if("ontouchend" in document){
+      return false;
+    }
+    //如果不支持触摸事件，则让鼠标经过事件正常触发
+    else{
+      x=e.clientX
+      y=e.clientY
+    }
+    //判断鼠标或触摸点在图片区域，是则显示放大镜div层
+    if(x>beginX&&x<endX&&y>beginY&&y<endY){
+      var mx=100-(x-beginX)/imgw*1920 //1920为原图片宽度
+      var my=100-(y-beginY)/imgh*1200 //1200为原图片高度
+      var bg="url(http://wx.karlew.com/loupe/img/pic.jpg) "+mx+"px "+my+"px no-repeat #fff"
+      $(".loupe").css("left",x-103+"px").css("top",y-103+"px").css('background',bg)
+      $(".loupe").css("visibility","visible")
+    }else{
+      $(".loupe").css("visibility","hidden")
+    }
+  }
+})
+</script>
