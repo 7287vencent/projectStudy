@@ -20,10 +20,10 @@ module.exports = {
         main: './src/main.js',
     },
     output: {
-        filename: 'js/[name].bundle.js',
-        chunkFilename: 'js/[name].bundle.js',
+        filename: 'static/js/[name].bundle.js',
+        chunkFilename: 'static/js/[name].bundle.js',
         // ? 资源引用的路径
-        // publicPath: './',
+        publicPath: '/strategy',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
     },
@@ -106,56 +106,45 @@ module.exports = {
                     {
                         loader: 'sass-loader',
                         options: {
-                            implementation: require('dart-sass')
+                            implementation: require('dart-sass'),
+                            additionalData: `@import "@/assets/css/public/variables.scss";`,
                         }
                     }
                 ]
             },
             {
-                test: /\.(jpe?g|png|gif)$/i,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        limit: 4096,
-                        fallback: {
-                            loader: 'file-loader',
-                            options: {
-                                name: 'static/img/[name].[hash:8].[ext]'
-                            }
-                        }
+                test: /\.(png|jpe?g|gif|webp)(\?.*)?$/,
+                type: 'asset',
+                parser: {
+                    //转base64的条件
+                    dataUrlCondition: {
+                        maxSize: 4 * 1024, // 25kb
                     }
-                }]
+                },
+                generator: {
+                    filename: 'static/img/[name].[hash:8].[ext]'
+                }
             },
             {
                 test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        limit: 4096,
-                        fallback: {
-                            loader: 'file-loader',
-                            options: {
-                                name: 'static/media/[name].[hash:8].[ext]'
-                            }
-                        }
+                type: 'asset',
+                parser: {
+                    //转base64的条件
+                    dataUrlCondition: {
+                        maxSize: 4 * 1024, // 25kb
                     }
-                }]
+                },
+                generator: {
+                    filename: 'static/media/[name].[hash:8].[ext]'
+                }
             },
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i,
-                use: [{
-                    loader: 'url-loader',
-                    options: {
-                        limit: 4096,
-                        fallback: {
-                            loader: 'file-loader',
-                            options: {
-                                name: 'static/fonts/[name].[hash:8].[ext]'
-                            }
-                        }
-                    }
-                }]
-            }
+                type: "asset/resource",
+                generator: {
+                    filename: 'static/fonts/[name].[hash:8].[ext]'
+                }
+            },
         ]
     },
     plugins: [
@@ -187,7 +176,8 @@ module.exports = {
     devtool: 'inline-source-map',
     resolve: {
         alias: {
-            vue$: 'vue/dist/vue.runtime.esm.js'
+            vue$: 'vue/dist/vue.runtime.esm.js',
+            '@': path.resolve('src'),
         },
         extensions: [
             '.js',
